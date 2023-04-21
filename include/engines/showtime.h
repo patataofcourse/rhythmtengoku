@@ -77,7 +77,7 @@ extern void showtime_init_gfx1(void); // Graphics Init. 1
 extern void showtime_engine_start(u32 version); // Game Engine Start
 extern void showtime_engine_event_stub(void); // Engine Event 1 (STUB)
 extern void showtime_engine_update(void); // Game Engine Update
-extern void func_0802be10(); // Engine Event 0 (?)
+extern void func_0802be10(u8); // Engine Event 0 (?)
 extern void showtime_engine_stop(void); // Game Engine Stop
 extern void showtime_cue_spawn_gray(struct Cue *, struct ShowtimeCue *, u32);
 extern u32  showtime_cue_update_gray(struct Cue *, struct ShowtimeCue *, u32 runningTime, u32 duration);
@@ -104,7 +104,7 @@ extern void showtime_common_init_tutorial(); // Common Event 2 (Init. Tutorial)
 extern void func_0802c1f0(u32, s16, u32);
 extern void func_0802c23c(void);
 extern void func_0802c334(void);
-// extern ? func_0802c36c(?);
+extern void func_0802c36c(u32);
 extern u32 func_0802c3d0(u32);
 // extern ? func_0802c40c(?);
 // extern ? func_0802c4b0(?);

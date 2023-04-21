@@ -72,7 +72,9 @@ void showtime_engine_event_stub() {
 #include "asm/engines/showtime/asm_0802bd44.s"
 
 
-#include "asm/engines/showtime/asm_0802be10.s"
+void func_0802be10(u8 arg0) {
+    gShowtimeInfo->unk3D0 = arg0;
+}
 
 
 void showtime_engine_stop() {
@@ -242,7 +244,12 @@ void func_0802c334() {
 }
 
 
-#include "asm/engines/showtime/asm_0802c36c.s"
+void func_0802c36c(u32 arg0) {
+    gShowtimeInfo->unk8[arg0].unk4 = 1;
+    gShowtimeInfo->unk8[arg0].unk8 = 0;
+    func_0804cebc(D_03005380, gShowtimeInfo->unk8[arg0].sprite, 0);
+    func_0804dcb8(D_03005380, gShowtimeInfo->unk8[arg0].sprite, get_beatscript_tempo() * 256 / 140);
+}
 
 
 u32 func_0802c3d0(u32 arg) {

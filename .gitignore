@@ -9,3 +9,5 @@ tools/agbcc/*
 *.sav
 *.dump
 .vscode/*
+
+progress.py
