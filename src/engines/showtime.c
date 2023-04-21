@@ -286,8 +286,8 @@ u32 func_0802c3d0(u32 arg) {
 
 
 void func_0802cfa4(u32 arg) {
-    gShowtimeInfo->unk24[arg].unk18 = 0;
-    gShowtimeInfo->unk24[arg].unk20 = 1;
+    gShowtimeInfo->unk20[arg].unk1C = 0;
+    gShowtimeInfo->unk20[arg].unk24 = 1;
 }
 
 
@@ -297,15 +297,15 @@ void func_0802cfa4(u32 arg) {
 
 
 u32 func_0802d068(u32 arg) {
-    return gShowtimeInfo->unk24[arg].unk8;
+    return gShowtimeInfo->unk20[arg].unkC;
 }
 
 
 u32 func_0802d080(u32 arg) {
-    if (gShowtimeInfo->unk24[arg].unk0 == 8) {
-        return gShowtimeInfo->unk24[arg].unkC + 13;
+    if (gShowtimeInfo->unk20[arg].unk4 == 8) {
+        return gShowtimeInfo->unk20[arg].unk10 + 13;
     } else {
-        return gShowtimeInfo->unk24[arg].unkC;
+        return gShowtimeInfo->unk20[arg].unk10;
     }
 }
 
