@@ -5,16 +5,16 @@
 
 #include "games/showtime/graphics/showtime_graphics.h"
 
-struct ShowtimeInfo {
+struct ShowtimeEngineData {
     struct BitmapFontOBJ *unk0;
     u16 unk4;
     u8 version;
-    struct ShowtimeInfo_sub {
+    struct ShowtimeEngineData_sub {
         s16 sprite;
         u32 unk4;
         s32 unk8;
     } unk8[2];
-    struct ShowtimeInfo_sub1 {
+    struct ShowtimeEngineData_sub1 {
         u32 unk0;
         u32 unk4;
         u32 pad8;
@@ -28,7 +28,7 @@ struct ShowtimeInfo {
     u32 pad160[2];
     u32 unk168;
     u32 pad16C[2];
-    struct ShowtimeInfo_sub2 {
+    struct ShowtimeEngineData_sub2 {
         s16 sprite;
         s32 unk4;
         s32 unk8;
