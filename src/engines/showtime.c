@@ -73,7 +73,7 @@ void showtime_engine_event_stub() {
 
 
 void func_0802be10(u8 arg0) {
-    gShowtimeInfo->unk3D0 = arg0;
+    gShowtime->unk3D0 = arg0;
 }
 
 
@@ -245,10 +245,10 @@ void func_0802c334() {
 
 
 void func_0802c36c(u32 arg0) {
-    gShowtimeInfo->unk8[arg0].unk4 = 1;
-    gShowtimeInfo->unk8[arg0].unk8 = 0;
-    func_0804cebc(D_03005380, gShowtimeInfo->unk8[arg0].sprite, 0);
-    func_0804dcb8(D_03005380, gShowtimeInfo->unk8[arg0].sprite, get_beatscript_tempo() * 256 / 140);
+    gShowtime->unk8[arg0].unk4 = 1;
+    gShowtime->unk8[arg0].unk8 = 0;
+    func_0804cebc(D_03005380, gShowtime->unk8[arg0].sprite, 0);
+    func_0804dcb8(D_03005380, gShowtime->unk8[arg0].sprite, get_beatscript_tempo() * 256 / 140);
 }
 
 
