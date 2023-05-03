@@ -7,7 +7,7 @@
 
 struct ShowtimeEngineData {
     struct BitmapFontOBJ *unk0;
-    u16 unk4;
+    s16 unk4;
     u8 version;
     struct ShowtimeEngineData_sub {
         s16 sprite;
@@ -130,7 +130,7 @@ extern void func_0802d0dc(u32, s16);
 extern void func_0802d38c(void);
 // extern ? func_0802d394(?);
 extern void func_0802d43c(void);
-// extern ? func_0802d81c(?);
+extern void func_0802d81c(u32);
 extern void func_0802d8bc(u32);
 // extern ? func_0802d918(?);
 extern void func_0802d96c(void);

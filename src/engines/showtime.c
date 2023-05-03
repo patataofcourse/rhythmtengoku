@@ -102,7 +102,10 @@ void showtime_cue_despawn_gray(struct Cue *cue, struct ShowtimeCue *info) {
 }
 
 
-#include "asm/engines/showtime/asm_0802be78.s"
+void showtime_cue_spawn_black(struct Cue * cue, struct ShowtimeCue * info, u32 unused) {
+    info->unk4 = func_0802ce70(1);
+    func_0802d38c();
+}
 
 
 u32 showtime_cue_update_black(struct Cue *cue, struct ShowtimeCue *info, u32 runningTime, u32 duration) {
@@ -188,7 +191,19 @@ void showtime_input_event(u32 pressed, u32 released) {
 
 #include "asm/engines/showtime/asm_0802c0c8.s"
 
-#include "asm/engines/showtime/asm_0802c150.s"
+
+void showtime_common_display_text(char* text) {
+    struct PrintedTextAnim* printedText;
+    if (text == NULL) {
+        func_0804d770(D_03005380, gShowtime->unk4, 0);
+        return;
+    }
+    printedText = bmp_font_obj_print_c(gShowtime->unk0, text, 1, 0xC);
+    delete_bmp_font_obj_text_anim(gShowtime->unk0, gShowtime->unk4);
+    func_0804d8f8(D_03005380, gShowtime->unk4, printedText, 0, 0, 0, 0);
+    func_0804d770(D_03005380, gShowtime->unk4, 1);
+}
+
 
 #include "asm/engines/showtime/asm_0802c1cc.s"
 
@@ -199,8 +214,8 @@ void func_0802c1f0(u32 unused, s16 sprite, u32 arg2) {
             break;
         case 1:
             gShowtime->unk8[arg2].unk4 = 0;
-        func_0804cebc(D_03005380, sprite, 3);
-        func_0804dcb8(D_03005380, sprite, 0);
+            func_0804cebc(D_03005380, sprite, 3);
+            func_0804dcb8(D_03005380, sprite, 0);
     }
 }
 
@@ -320,6 +335,7 @@ s32 func_0802ce70(s32 arg0) {
     return -1;
 }
 
+
 #include "asm/engines/showtime/asm_0802cf8c.s"
 
 
@@ -380,7 +396,27 @@ void func_0802d38c(void) {
 
 #include "asm/engines/showtime/asm_0802d43c.s"
 
-#include "asm/engines/showtime/asm_0802d81c.s"
+void func_0802d81c(u32 arg0) {
+    s32 i;
+    for (i = 0; i < 8;  i++) {
+        if (gShowtime->unk174[i].unk4 == 1) {
+            gShowtime->unk174[i].unk4 = 2;
+            gShowtime->unk174[i].unkC = arg0;
+            gShowtime->unk174[i].unk8 = 0;
+            func_0804d770(D_03005380, gShowtime->unk174[i].sprite, 1);
+            return;
+        }
+    }
+    for (i = 0; i < 8; i++) {
+        if (gShowtime->unk174[i].unk4 == 0) {
+            gShowtime->unk174[i].unk4 = 2;
+            gShowtime->unk174[i].unkC = arg0;
+            gShowtime->unk174[i].unk8 = 0;
+            func_0804d770(D_03005380, gShowtime->unk174[i].sprite, 1);
+            return;
+        }
+    }
+}
 
 
 void func_0802d8bc(u32 arg) {
@@ -400,6 +436,7 @@ void func_0802d8bc(u32 arg) {
 
 #include "asm/engines/showtime/asm_0802d918.s"
 
+
 void func_0802d96c(void) {
     gShowtime->unk3C4 = 8;
     D_03004b10.BLDMOD = 0x3a44;
@@ -415,6 +452,7 @@ void func_0802d96c(void) {
     gShowtime->unk1F8 = 0;
     gShowtime->unk1FC = 0;
 }
+
 
 #include "asm/engines/showtime/asm_0802d9fc.s"
 
