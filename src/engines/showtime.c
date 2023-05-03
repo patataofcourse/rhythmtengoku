@@ -280,7 +280,45 @@ u32 func_0802c3d0(u32 arg) {
 
 #include "asm/engines/showtime/asm_0802c5c8.s"
 
-#include "asm/engines/showtime/asm_0802ce70.s"
+
+s32 func_0802ce70(s32 arg0) {
+    s32 i;
+
+    if (arg0 > 4) {
+        arg0 = 0;
+    }
+
+    for (i = 0; i < 8; i++) {
+        if (gShowtime->unk20[i].unk4 == 0) {
+            gShowtime->unk20[i].unk4 = 1;
+            func_0804d8f8(D_03005380, gShowtime->unk20[i].unk0, showtime_penguin_beat_anim[arg0], 0, 1, 0, 0);
+            func_0804d770(D_03005380, gShowtime->unk20[i].unk0, 1);
+            gShowtime->unk20[i].unk20 = arg0;
+            func_0804d8c4(D_03005380, gShowtime->unk20[i].unk0, 0);
+
+            switch (arg0) {
+                case 2:
+                    func_0804d8c4(D_03005380, gShowtime->unk20[i].unk0, 4);
+                    break;
+
+                case 4:
+                    func_0802c4c0(4);
+                case 3:
+                    func_0804d8c4(D_03005380, gShowtime->unk20[i].unk0, 4);
+                    break;
+
+                default:
+                    break;
+            }
+
+            func_0804dcb8(D_03005380, gShowtime->unk20[i].unk0, 0);
+            gShowtime->unk20[i].unk24 = 0;
+            return i;
+        }
+    }
+
+    return -1;
+}
 
 #include "asm/engines/showtime/asm_0802cf8c.s"
 
@@ -362,7 +400,21 @@ void func_0802d8bc(u32 arg) {
 
 #include "asm/engines/showtime/asm_0802d918.s"
 
-#include "asm/engines/showtime/asm_0802d96c.s"
+void func_0802d96c(void) {
+    gShowtime->unk3C4 = 8;
+    D_03004b10.BLDMOD = 0x3a44;
+    D_03004b10.COLEV = gShowtime->unk3C4 << 8 | (0x10 - gShowtime->unk3C4);
+    D_03004b10.WIN0H = 0xf0;
+    D_03004b10.WIN1H = 0xf0;
+    D_03004b10.WIN0V = 0x80a0;
+    D_03004b10.WIN1V = 0xa0;
+    D_03004b10.WININ = 0x3337;
+    D_03004b10.WINOUT = 0x2033;
+    D_03004b10.DISPCNT |= 0x2000;
+    gShowtime->unk1F4 = 0;
+    gShowtime->unk1F8 = 0;
+    gShowtime->unk1FC = 0;
+}
 
 #include "asm/engines/showtime/asm_0802d9fc.s"
 
