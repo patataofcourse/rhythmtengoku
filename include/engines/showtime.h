@@ -25,9 +25,11 @@ struct ShowtimeEngineData {
         u32 unk20;
         u32 unk24;
     } unk20[8];
-    u32 pad160[2];
+    s32 unk160;
+    u32 pad164;
     u32 unk168;
-    u32 pad16C[2];
+    u32 pad16C;
+    u16 unk170;
     struct ShowtimeEngineData_sub2 {
         s16 sprite;
         s32 unk4;

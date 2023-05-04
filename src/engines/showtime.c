@@ -121,7 +121,10 @@ void showtime_cue_despawn_black(struct Cue *cue, struct ShowtimeCue *info) {
 }
 
 
-#include "asm/engines/showtime/asm_0802beb0.s"
+void showtime_cue_spawn_white_fast(struct Cue * cue, struct ShowtimeCue * info, u32 unused) {
+    info->unk4 = func_0802ce70(2);
+    func_0802d38c();
+}
 
 
 #include "asm/engines/showtime/asm_0802bec8.s"
@@ -192,7 +195,14 @@ void showtime_input_event(u32 pressed, u32 released) {
 }
 
 
-#include "asm/engines/showtime/asm_0802c0c8.s"
+void showtime_common_beat_animation(void) {
+    if (gShowtime->unk170 == 0 && gShowtime->unk168 == 0) {
+        s16 temp = gShowtime->unk168;
+        func_0804d8f8(D_03005380, gShowtime->unk160, anim_showtime_monkey_beat2, 0, 1, 0x7f, temp);
+        func_0804cebc(D_03005380, gShowtime->unk160, 0);
+        func_0804dcb8(D_03005380, gShowtime->unk160, (INT_TO_FIXED(get_beatscript_tempo()) / 0x8cu));
+    }
+}
 
 
 void showtime_common_display_text(char* text) {
