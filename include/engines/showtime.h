@@ -40,10 +40,9 @@ struct ShowtimeEngineData {
     u32 unk1F8;
     u32 unk1FC;
     u32 pad200[0x70];
-    u32 unk3C0; // beat related stuff???
+    s32 unk3C0; // beat related stuff???
     u32 unk3C4;
-    u32 unk3C8;
-    u32 unk3CC;
+    u32 unk3C8[2];
     u8 unk3D0;
 };
 

@@ -59,8 +59,8 @@ void showtime_engine_start(u32 version) {
     func_0802d394();
     func_0802da84();
     gShowtime->unk3C0 = 0;
-    gShowtime->unk3C8 = 0;
-    gShowtime->unk3CC = 0;
+    gShowtime->unk3C8[0] = 0;
+    gShowtime->unk3C8[1] = 0;
     gShowtime->unk3D0 = 0;
 }
 
@@ -69,7 +69,28 @@ void showtime_engine_event_stub() {
 }
 
 
-#include "asm/engines/showtime/asm_0802bd44.s"
+void showtime_engine_update(void) {
+    s32 i;
+    for (i = 0; i < 2; i++) {
+        if (gShowtime->unk3C8[i] != 0) {
+            if (i == 0) {
+                func_0804d160(D_03005380, anim_showtime_splash_ball, 0, gShowtime->unk3C8[i]-4, 0x9c, 0, 1, 0, 3);
+            } else {
+                func_0804d160(D_03005380, anim_showtime_splash_penguin, 0, gShowtime->unk3C8[i]+8, 0x88, 0, 1, 0, 3);
+            }
+            gShowtime->unk3C8[i] = 0;
+        }
+    }
+    func_0802c334();
+    func_0802d43c();
+    func_0802c5c8();
+    func_0802d250();
+    func_0802d9fc();
+    func_0802db08();
+    if (gShowtime->unk3C0 > 0) {
+        gShowtime->unk3C0 -= 1;
+    }
+}
 
 
 void func_0802be10(u8 arg0) {
@@ -127,7 +148,13 @@ void showtime_cue_spawn_white_fast(struct Cue * cue, struct ShowtimeCue * info, 
 }
 
 
-#include "asm/engines/showtime/asm_0802bec8.s"
+u32 showtime_cue_update_white_fast(struct Cue * cue, struct ShowtimeCue * info, u32 runningTime, u32 duration) {
+    if (runningTime > beats_to_ticks(0x78)) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
 
 
 void showtime_cue_despawn_white_fast(struct Cue *cue, struct ShowtimeCue *info) {
