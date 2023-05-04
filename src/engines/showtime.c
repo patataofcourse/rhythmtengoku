@@ -176,7 +176,10 @@ void showtime_cue_hit(struct Cue *cue, struct ShowtimeCue *info, u32 pressed, u3
 
 #include "asm/engines/showtime/asm_0802bf88.s"
 
-#include "asm/engines/showtime/asm_0802c078.s"
+
+void showtime_cue_miss(struct Cue * cue, struct ShowtimeCue * info) {
+    beatscript_enable_loops();
+}
 
 
 void showtime_input_event(u32 pressed, u32 released) {
@@ -200,7 +203,7 @@ void showtime_common_display_text(char* text) {
     }
     printedText = bmp_font_obj_print_c(gShowtime->unk0, text, 1, 0xC);
     delete_bmp_font_obj_text_anim(gShowtime->unk0, gShowtime->unk4);
-    func_0804d8f8(D_03005380, gShowtime->unk4, printedText, 0, 0, 0, 0);
+    func_0804d8f8(D_03005380, gShowtime->unk4, printedText->frames, 0, 0, 0, 0);
     func_0804d770(D_03005380, gShowtime->unk4, 1);
 }
 
@@ -281,17 +284,84 @@ u32 func_0802c3d0(u32 arg) {
 }
 
 
-#include "asm/engines/showtime/asm_0802c40c.s"
+void func_0802c40c(void) {
+    s32 i;
+    for (i = 0; i < 8; i++) {
+        gShowtime->unk20[i].unk4 = 0;
+        gShowtime->unk20[i].unk0 = func_0804d160(D_03005380, anim_showtime_penguin_beat, 0, 0x40, 0x40, 0, 1, 0, 0);
+        gShowtime->unk20[i].unk8 = 0;
+        gShowtime->unk20[i].unk1C = 1;
+        gShowtime->unk20[i].unk20 = 0;
+        func_0804d770(D_03005380, gShowtime->unk20[i].unk0, 0);
+        func_0804d5d4(D_03005380, gShowtime->unk20[i].unk0, 0x100, 0x50);
+    }
+}
+
 
 #include "asm/engines/showtime/asm_0802c4b0.s"
 
-#include "asm/engines/showtime/asm_0802c4c0.s"
 
-#include "asm/engines/showtime/asm_0802c4f4.s"
+void func_0802c4c0(s32 arg0) {
+    switch(arg0) {
+        case 0:
+            play_sound(&s_esa_pengin1_1_seqData);
+            break;
+        case 1:
+            play_sound(&s_esa_pengin2_1_seqData);
+            break;
+        case 2:
+        case 3:
+        case 4:
+            play_sound(&s_esa_pengin3_1_seqData);
+    }
+}
 
-#include "asm/engines/showtime/asm_0802c528.s"
 
-#include "asm/engines/showtime/asm_0802c55c.s"
+void func_0802c4f4(s32 arg0) {
+    switch(arg0) {
+        case 0:
+            play_sound(&s_esa_pengin1_2_seqData);
+            break;
+        case 1:
+            play_sound(&s_esa_pengin2_2_seqData);
+            break;
+        case 2:
+        case 3:
+        case 4:
+            play_sound(&s_esa_pengin3_2_seqData);
+    }
+}
+
+
+void func_0802c528(s32 arg0) {
+    switch(arg0) {
+        case 0:
+            play_sound(&s_esa_pengin1_3_seqData);
+            break;
+        case 1:
+            play_sound(&s_esa_pengin2_3_seqData);
+            break;
+        case 2:
+        case 3:
+        case 4:
+            play_sound(&s_esa_pengin3_3_seqData);
+    }
+}
+
+
+void func_0802c55c(u32 arg0, u32 arg1, u32 arg2, u32 arg3, s32 arg_sp1C, u32 arg_sp20, u32 arg_sp24, s32* arg_sp28, s32* arg_sp2C) {
+    s32 temp_r5 = math_lerp(INT_TO_FIXED(arg0), INT_TO_FIXED(arg2), arg_sp20, arg_sp24);
+    s32 temp_r2 = (INT_TO_FIXED(arg0 + arg2) >> 1) - temp_r5;
+    s32 temp_r1 = INT_TO_FIXED(arg2 - arg0) >> 1;
+    s32 temp_r4;
+    temp_r2 = FIXED_POINT_MUL(temp_r2, temp_r2);
+    temp_r1 = FIXED_POINT_MUL(temp_r1, temp_r1);
+    temp_r4 = arg_sp1C * temp_r2 / temp_r1 - arg_sp1C;
+    temp_r4 += math_lerp(arg1, arg3, arg_sp20, arg_sp24);
+    *arg_sp28 = FIXED_TO_INT(temp_r5);
+    *arg_sp2C = temp_r4;
+}
+
 
 #include "asm/engines/showtime/asm_0802c5c8.s"
 

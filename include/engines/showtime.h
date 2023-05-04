@@ -17,7 +17,7 @@ struct ShowtimeEngineData {
     struct ShowtimeEngineData_sub1 {
         s16 unk0;
         u32 unk4;
-        u32 pad8;
+        u32 unk8;
         u32 unkC;
         u32 unk10;
         u32 pad14[2];
@@ -108,12 +108,12 @@ extern void func_0802c23c(void);
 extern void func_0802c334(void);
 extern void func_0802c36c(u32);
 extern u32 func_0802c3d0(u32);
-// extern ? func_0802c40c(?);
+extern void func_0802c40c(void);
 // extern ? func_0802c4b0(?);
-// extern ? func_0802c4c0(?);
-// extern ? func_0802c4f4(?);
-// extern ? func_0802c528(?);
-// extern ? func_0802c55c(?);
+extern void func_0802c4c0(s32);
+extern void func_0802c4f4(s32);
+extern void func_0802c528(s32);
+extern void func_0802c55c(u32, u32, u32, u32, s32, u32, u32, s32*, s32*);
 // extern ? func_0802c5c8(?);
 extern s32 func_0802ce70(s32);
 // extern ? func_0802cf8c(?);
