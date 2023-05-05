@@ -386,11 +386,11 @@ void func_0802c528(s32 arg0) {
 }
 
 
-void func_0802c55c(u32 arg0, u32 arg1, u32 arg2, u32 arg3, s32 arg_sp1C, u32 arg_sp20, u32 arg_sp24, s32* arg_sp28, s32* arg_sp2C) {
-    s32 temp_r5 = math_lerp(INT_TO_FIXED(arg0), INT_TO_FIXED(arg2), arg_sp20, arg_sp24);
-    s32 temp_r2 = (INT_TO_FIXED(arg0 + arg2) >> 1) - temp_r5;
-    s32 temp_r1 = INT_TO_FIXED(arg2 - arg0) >> 1;
-    s32 temp_r4;
+void func_0802c55c(u32 arg0, u32 arg1, u32 arg2, u32 arg3, s24_8 arg_sp1C, u32 arg_sp20, u32 arg_sp24, s32 *arg_sp28, s24_8 *arg_sp2C) {
+    s24_8 temp_r5 = math_lerp(INT_TO_FIXED(arg0), INT_TO_FIXED(arg2), arg_sp20, arg_sp24);
+    s24_8 temp_r2 = (INT_TO_FIXED(arg0 + arg2) >> 1) - temp_r5;
+    s24_8 temp_r1 = INT_TO_FIXED(arg2 - arg0) >> 1;
+    s24_8 temp_r4;
     temp_r2 = FIXED_POINT_MUL(temp_r2, temp_r2);
     temp_r1 = FIXED_POINT_MUL(temp_r1, temp_r1);
     temp_r4 = arg_sp1C * temp_r2 / temp_r1 - arg_sp1C;

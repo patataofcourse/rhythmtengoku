@@ -114,7 +114,7 @@ extern void func_0802c40c(void);
 extern void func_0802c4c0(s32);
 extern void func_0802c4f4(s32);
 extern void func_0802c528(s32);
-extern void func_0802c55c(u32, u32, u32, u32, s32, u32, u32, s32*, s32*);
+extern void func_0802c55c(u32, u32, u32, u32, s24_8, u32, u32, s32*, s24_8*);
 // extern ? func_0802c5c8(?);
 extern s32 func_0802ce70(s32);
 // extern ? func_0802cf8c(?);
