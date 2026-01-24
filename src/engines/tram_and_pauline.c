@@ -33,7 +33,27 @@ void tram_pauline_init_gfx1(void) {
 
 #include "asm/engines/tram_and_pauline/asm_08040064.s"
 
-#include "asm/engines/tram_and_pauline/asm_080400d0.s"
+void func_080400d0(u8 fox) {
+    if (fox > 1) {
+        fox -= 2;
+        gTramPauline->foxes[fox].unk_5 = 3;
+    } else {
+        gTramPauline->foxes[fox].unk_5 = 2;
+    }
+
+    gTramPauline->foxes[fox].unk_F = 0;
+    gTramPauline->foxes[fox].unk_7 = fox;
+
+    sprite_set_anim(gSpriteHandler, gTramPauline->foxes[fox].sprite, 
+        tram_pauline_anim_table[
+            gTramPauline->version * 0x18
+            + (gTramPauline->foxes[fox].unk_14 + 0xc)
+        ],
+        0, 0, 0, 0
+    );
+
+    play_sound_in_player(3, &s_tran_jump_se_seqData);
+}
 
 #include "asm/engines/tram_and_pauline/asm_0804016c.s"
 

@@ -57,7 +57,7 @@ extern const u32 D_0805a91c[];
 // Engine Definition Data:
 extern struct CompressedGraphics *tram_pauline_buffered_textures[];
 extern struct GraphicsTable *tram_pauline_gfx_tables[];
-extern struct Animation *tram_pauline_anim_table[][4][6];
+extern struct Animation *tram_pauline_anim_table[];
 
 
 // Functions:
@@ -66,7 +66,7 @@ extern void tram_pauline_init_gfx2(void); // Graphics Init. 2
 extern void tram_pauline_init_gfx1(void); // Graphics Init. 1
 extern void tram_pauline_engine_start(u32 version); // Game Engine Start
 extern void func_08040064(); // Engine Event 0x00 (?)
-extern void func_080400d0(); // Engine Event 0x01 (?)
+extern void func_080400d0(u8 fox); // Engine Event 0x01 (?)
 // extern ? func_0804016c(?);
 // extern ? func_08040314(?);
 extern void func_08040434(); // Engine Event 0x02 (?)
