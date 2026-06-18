@@ -23,11 +23,11 @@ jobs:
 
       - name: Prepare
         run: |
+          cp /baserom.gba baserom.gba
           git clone https://github.com/pret/agbcc
           cd agbcc
           ./build.sh
           ./install.sh ..
-          cp /baserom.gba baserom.gba
 
       - name: Build
         run: |
